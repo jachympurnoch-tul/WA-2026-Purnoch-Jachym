@@ -37,4 +37,3 @@ $database = new Database();
 
 // na objektu uloženém v proměnné $database zavoláme metodu getConnection()
 $database->getConnection();
-
