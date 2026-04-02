@@ -1,3 +1,11 @@
+<style>
+    body { 
+        margin: 0; 
+        padding: 0; 
+        background-color: #fdfaf6; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    }
+</style>
 <?php
 
 // Pro účely výuky a ladění na lokálním serveru (např. XAMPP) 

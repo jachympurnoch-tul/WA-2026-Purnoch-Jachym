@@ -1,3 +1,113 @@
+<style>
+    :root {
+        --primary: #2c3e50;    /* Tmavě modrá hřbetu knihy */
+        --accent: #e67e22;     /* Výrazná oranžová pro akce */
+        --bg: #f8f9fa;         /* Světlé pozadí */
+        --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    body {
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        background-color: var(--bg);
+        margin: 0;
+        padding: 40px;
+        color: #333;
+    }
+
+    h1 {
+        color: var(--primary);
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    /* Navigace jako menu */
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+
+    /* Vzhled tlačítek v menu */
+    ul li a {
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+    /* Odkaz Domů */
+    ul li a:not([href*="create"]) {
+        background-color: #fff;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+    }
+
+    /* Tlačítko Přidat novou knihu - Teď bude pořádně vidět! */
+    ul li a[href*="create"] {
+        background-color: var(--accent);
+        color: white !important; /* Vynucení bílé barvy */
+        box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+    }
+
+    ul li a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    /* Tabulka jako čistá karta */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden; /* Aby rohy zůstaly zaoblené */
+        box-shadow: var(--card-shadow);
+    }
+
+    th {
+        background-color: var(--primary);
+        color: white;
+        text-align: left;
+        padding: 18px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    td {
+        padding: 15px 18px;
+        border-bottom: 1px solid #eee;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tr:hover {
+        background-color: #fcfcfc;
+    }
+
+    /* Odkazy v tabulce (Akce) */
+    td a {
+        text-decoration: none;
+        font-weight: bold;
+        margin-right: 10px;
+        color: var(--primary);
+    }
+
+    td a[href*="delete"] { color: #e74c3c; } /* Červená pro smazat */
+    td a[href*="edit"] { color: #3498db; }   /* Modrá pro upravit */
+
+    footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: #95a5a6;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="cs">
 <head>

@@ -221,8 +221,35 @@ class BookController {
         require_once '../app/views/books/book_edit.php';
     }
 
+    // Zobrazení detailu jedné knihy
+    public function show($id = null) {
+        // Kontrola, zda bylo v URL předáno ID
+        if (!$id) {
+            $this->addErrorMessage('Nebylo zadáno ID knihy k zobrazení.');
+            header('Location: ' . BASE_URL . '/index.php');
+            exit;
+        }
 
+        // Načtení potřebných tříd a spojení s databází
+        require_once '../app/models/Database.php';
+        require_once '../app/models/Book.php';
 
+        $database = new Database();
+        $db = $database->getConnection();
 
+        // Inicializace modelu a získání dat
+        $bookModel = new Book($db);
+        $book = $bookModel->getById($id);
+
+        // Bezpečnostní kontrola: Zda kniha s daným ID vůbec existuje
+        if (!$book) {
+            $this->addErrorMessage('Požadovaná kniha nebyla v databázi nalezena.');
+            header('Location: ' . BASE_URL . '/index.php');
+            exit;
+        }
+
+        // Pokud je vše v pořádku, načte se (vloží) nový HTML pohled pro detail
+        require_once '../app/views/books/book_show.php';
+    }
 
 }

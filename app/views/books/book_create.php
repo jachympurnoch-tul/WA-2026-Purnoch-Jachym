@@ -1,3 +1,100 @@
+<style>
+    :root {
+        --primary: #2c3e50;
+        --accent: #e67e22;
+        --bg: #f8f9fa;
+    }
+
+    body {
+        background-color: #fdfaf6;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        display: flex; /* Zapne centrování */
+        flex-direction: column;
+        align-items: center; /* Horizontální centrování */
+        justify-content: center; /* Vertikální centrování */
+        min-height: 100vh; /* Roztáhne tělo na celou výšku okna */
+    }
+
+    /* Kontejner pro nadpis a formulář */
+    .form-wrapper {
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    h1 {
+        color: var(--primary);
+        margin-bottom: 5px;
+    }
+
+    p {
+        color: #7f8c8d;
+        margin-bottom: 25px;
+    }
+
+    /* Samotná "tabulka" formuláře */
+    form {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border-top: 6px solid var(--accent); /* Designový "hřbet" knihy */
+        text-align: left; /* Text uvnitř formuláře bude vlevo */
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--primary);
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-sizing: border-box; /* Aby padding nerozšiřoval input */
+        font-size: 1rem;
+    }
+
+    input:focus {
+        border-color: var(--accent);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+    }
+
+    /* Tlačítko pod formulářem */
+    button[type="submit"], input[type="submit"] {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: var(--accent);
+    }
+
+    /* Odkaz zpět */
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        color: #95a5a6;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    
+    .back-link:hover { color: var(--primary); }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>

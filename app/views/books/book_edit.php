@@ -1,3 +1,18 @@
+<style>
+    body { background: #f4f1ea; font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+    form { 
+        background: white; 
+        padding: 30px; 
+        border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        width: 100%; 
+        max-width: 400px;
+        border-top: 5px solid #2980b9; /* Modrá barva pro úpravu */
+    }
+    h1 { color: #2c3e50; margin-bottom: 20px; }
+    input { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+    .submit-btn { background: #2980b9; color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; cursor: pointer; }
+</style>
 <!DOCTYPE html>
 <html lang="cs">
 <head>
