@@ -1,169 +1,134 @@
-<style>
-    :root {
-        --primary: #e67e22;
-        --accent: #2c3e50;
-        --bg: #f8f9fa
-    }
+<?php require_once '../app/views/layout/header.php'; ?>
 
-    body {
-        background-color: #f8f9fa;
-        font-family: 'Segoe UI', sans-serif;
-        margin: 0;
-        display: flex; /* Zapne centrování */
-        flex-direction: column;
-        align-items: center; /* Horizontální centrování */
-        justify-content: center; /* Vertikální centrování */
-        min-height: 100vh; /* Roztáhne tělo na celou výšku okna */
-    }
-
-    /* Kontejner pro nadpis a formulář */
-    .form-wrapper {
-        width: 100%;
-        max-width: 500px;
-        text-align: center;
-    }
-
-    h1 {
-        color: var(--primary);
-        margin-bottom: 5px;
-    }
-
-    p {
-        color: #7f8c8d;
-        margin-bottom: 25px;
-    }
-
-    /* Samotná "tabulka" formuláře */
-    form {
-        background: white;
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        border-top: 6px solid var(--accent); /* Designový "hřbet" knihy */
-        text-align: left; /* Text uvnitř formuláře bude vlevo */
-    }
-
-    label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: var(--primary);
-    }
-
-    input, select, textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-sizing: border-box; /* Aby padding nerozšiřoval input */
-        font-size: 1rem;
-    }
-
-    input:focus {
-        border-color: var(--accent);
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
-    }
-
-    /* Tlačítko pod formulářem */
-    button[type="submit"], input[type="submit"] {
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px;
-        width: 100%;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-    button[type="submit"]:hover {
-        background-color: var(--accent);
-    }
-
-    /* Odkaz zpět */
-    .back-link {
-        display: block;
-        margin-top: 20px;
-        color: #95a5a6;
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
-    
-    .back-link:hover { color: var(--primary); }
-</style>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <div>
-            <h2>Přidat novou knihu</h2>
-            <p>Vyplňte údaje a uložte knihu do databáze.</p>
-        </div>
-        
-        <div>
-            <form action="<?= BASE_URL ?>/index.php?url=book/store" method="post" enctype="multipart/form-data">
-                <div>
-                    <div>
-                        <label for="title">Název knihy <span>*</span></label>
-                        <input type="text" id="title" name="title" required>
-                    </div>
-                    <div>
-                        <label for="author">Autor <span>*</span></label>
-                        <input type="text" id="author" name="author" placeholder="Příjmení Jméno" required>
-                    </div>
-                    <div>
-                        <label for="isbn">ISBN <span>*</span></label>
-                        <input type="text" id="isbn" name="isbn">
-                    </div>
-                    <div>
-                        <label for="category">Kategorie </label>
-                        <input type="text" id="category" name="category">
-                    </div>
-                    <div>
-                        <label for="subcategory">Podkategorie </label>
-                        <input type="text" id="subcategory" name="subcategory">
-                    </div>
-                    <div>
-                        <label for="year">Rok vydání  <span>*</span></label>
-                        <input type="number" id="year" name="year" required>
-                    </div>
-                    <div>
-                        <label for="price">Cena knihy</label>
-                        <input type="number" id="price" name="price" step="0.5">
-                    </div>
-                    <div>
-                        <label for="link">Odkaz</label>
-                        <input type="text" id="link" name="link">
-                    </div>
-                    <div>
-                        <label for="description">Popis knihy</label>
-                        <textarea id="description" name="description" rows="5">Popis knihy: </textarea>
-                    </div>    
-                    <div>
-                        <label >Obrázky (můžete nahrát více)</label>
-                        <label>
-                            <span>Klikni pro výběr souborů</span>
-                            <span>JPG / PNG / WebP – více souborů najednou</span>
-                            <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden">
-                        </label>
-                    </div>
-                    <div>
-                        <button type="submit">Uložit knihu do DB</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
+<div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border-t-4 border-orange-500 text-slate-800 mb-8">
+    <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-slate-800">Přidat novou knihu</h2>
+        <p class="text-slate-500">Vyplňte údaje a uložte knihu do databáze.</p>
     </div>
-</body>
-</html>
+    
+    <form action="<?= BASE_URL ?>/index.php?url=book/store" method="post" enctype="multipart/form-data">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Full width title -->
+            <div class="md:col-span-3">
+                <label for="title" class="block font-semibold mb-1 text-slate-700 text-sm">Název knihy <span class="text-rose-500">*</span></label>
+                <input type="text" id="title" name="title" required class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            
+            <!-- Author (2 cols) & ISBN (1 col) -->
+            <div class="md:col-span-2">
+                <label for="author" class="block font-semibold mb-1 text-slate-700 text-sm">Autor <span class="text-rose-500">*</span></label>
+                <input type="text" id="author" name="author" placeholder="Příjmení Jméno" required class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            <div class="md:col-span-1">
+                <label for="isbn" class="block font-semibold mb-1 text-slate-700 text-sm">ISBN</label>
+                <input type="text" id="isbn" name="isbn" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            
+            <!-- Category & Subcategory -->
+            <div class="md:col-span-2">
+                <label for="category" class="block font-semibold mb-1 text-slate-700 text-sm">Kategorie</label>
+                <input type="text" id="category" name="category" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            <div class="md:col-span-1">
+                <label for="subcategory" class="block font-semibold mb-1 text-slate-700 text-sm">Podkategorie</label>
+                <input type="text" id="subcategory" name="subcategory" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            
+            <!-- Year, Price, Link -->
+            <div class="md:col-span-1">
+                <label for="year" class="block font-semibold mb-1 text-slate-700 text-sm">Rok vydání <span class="text-rose-500">*</span></label>
+                <input type="number" id="year" name="year" required class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            <div class="md:col-span-1">
+                <label for="price" class="block font-semibold mb-1 text-slate-700 text-sm">Cena knihy (Kč)</label>
+                <input type="number" id="price" name="price" step="0.5" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            <div class="md:col-span-1">
+                <label for="link" class="block font-semibold mb-1 text-slate-700 text-sm">Odkaz / URL</label>
+                <input type="text" id="link" name="link" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">
+            </div>
+            
+            <!-- Description -->
+            <div class="md:col-span-3">
+                <label for="description" class="block font-semibold mb-1 text-slate-700 text-sm">Popis knihy</label>
+                <textarea id="description" name="description" rows="2" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:outline-none transition">Popis knihy: </textarea>
+            </div>    
+            
+            <!-- Images -->
+            <div class="md:col-span-3">
+                <label class="block font-semibold mb-1 text-slate-700 text-sm">Obrázky knihy</label>
+                <label class="block border-2 border-dashed border-slate-300 p-4 text-center rounded hover:bg-slate-50 hover:border-orange-500 cursor-pointer transition">
+                    <span id="file-title" class="block text-slate-700 font-semibold mb-1">Klikni pro výběr souborů</span>
+                    <span id="file-info" class="block text-slate-500 text-xs mt-1">Žádné soubory nebyly vybrány</span>
+                    <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden">
+                </label>
+            </div>
+            
+            <!-- Button & Back link -->
+            <div class="md:col-span-3 mt-2">
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow transition">
+                    Uložit knihu do DB
+                </button>
+                <div class="text-center mt-4">
+                    <a href="<?= BASE_URL ?>/index.php" class="text-slate-500 hover:text-orange-500 transition text-sm font-medium">
+                        &larr; Zpět na seznam knih
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Najdeme naše HTML prvky podle ID
+    const fileInput = document.getElementById('images');
+    const fileTitle = document.getElementById('file-title');
+    const fileInfo = document.getElementById('file-info');
+
+    // Posloucháme událost 'change' (změna hodnoty v inputu)
+    fileInput.addEventListener('change', function(event) {
+        const files = event.target.files;
+        
+        // 1. Zabezpečení proti špatným souborům na straně klienta
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+        let hasInvalidFile = false;
+        
+        for (let i = 0; i < files.length; i++) {
+            if (!allowedTypes.includes(files[i].type)) {
+                hasInvalidFile = true;
+                break;
+            }
+        }
+
+        if (hasInvalidFile) {
+            alert('Upozornění: Do tohoto pole lze nahrávat pouze skutečné obrázky (soubory s koncovkami JPG, PNG, WebP nebo GIF). Ostatní soubory byly odmítnuty.');
+            fileInput.value = ''; // Vyresetujeme špatný výběr
+            
+            // Vrátíme styl do výchozího stavu
+            fileTitle.textContent = 'Klikni pro výběr souborů';
+            fileTitle.className = 'block text-slate-700 font-semibold mb-1';
+            fileInfo.textContent = 'Žádné soubory nebyly vybrány';
+            return; // Ukončíme okamžitě funkci
+        }
+        
+        // 2. Soubory jsou v pořádku, změníme grafiku
+        if (files.length === 0) {
+            // Uživatel výběr zrušil prázdným klikem
+            fileTitle.textContent = 'Klikni pro výběr souborů';
+            fileTitle.className = 'block text-slate-700 font-semibold mb-1';
+            fileInfo.textContent = 'Žádné soubory nebyly vybrány';
+        } else if (files.length === 1) {
+            // Vybrán 1 soubor - ukážeme jeho název
+            fileTitle.textContent = 'Soubor připraven';
+            fileTitle.className = 'block text-orange-500 font-bold mb-1';
+            fileInfo.textContent = files[0].name;
+        } else {
+            // Vybráno více souborů - ukážeme počet
+            fileTitle.textContent = 'Soubory připraveny';
+            fileTitle.className = 'block text-orange-500 font-bold mb-1';
+            fileInfo.textContent = 'Vybráno celkem: ' + files.length + ' souborů';
+        }
+    });
+</script>
+
+<?php require_once '../app/views/layout/footer.php'; ?>

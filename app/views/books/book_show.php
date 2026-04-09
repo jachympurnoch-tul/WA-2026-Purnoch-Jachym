@@ -1,173 +1,85 @@
-<style>
-    :root {
-        --primary: #2c3e50;    /* Tmavě modrá hřbetu knihy */
-        --accent: #e67e22;     /* Výrazná oranžová pro akce */
-        --bg: #f8f9fa;         /* Světlé pozadí */
-        --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+<?php require_once '../app/views/layout/header.php'; ?>
 
-    body {
-        font-family: 'Segoe UI', Roboto, sans-serif;
-        background-color: var(--bg);
-        margin: 0;
-        padding: 40px;
-        color: #333;
-    }
-
-    h1 {
-        color: var(--primary);
-        font-size: 2.5rem;
-        margin-bottom: 30px;
-    }
-
-    /* Tlačítka jako menu / zpět */
-    .btn-back {
-        text-decoration: none;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        display: inline-block;
-        background-color: #fff;
-        color: var(--primary);
-        border: 2px solid var(--primary);
-        margin-bottom: 20px;
-    }
-
-    .btn-back:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-
-    /* Detail knihy - Karta */
-    .book-detail-wrapper {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: var(--card-shadow);
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 30px;
-    }
-
-    .book-detail-wrapper h2 {
-        border-bottom: 2px solid var(--primary);
-        padding-bottom: 10px;
-        margin-top: 0;
-        color: var(--primary);
-    }
-
-    table.detail-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    table.detail-table th {
-        text-align: left;
-        width: 30%;
-        padding: 12px 0;
-        color: var(--primary);
-        border-bottom: 1px solid #eee;
-    }
-
-    table.detail-table td {
-        padding: 12px 0;
-        border-bottom: 1px solid #eee;
-    }
-
-    .description-box {
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-left: 4px solid var(--accent);
-        border-radius: 4px;
-        margin-top: 20px;
-        font-style: italic;
-        line-height: 1.6;
-    }
-
-    footer {
-        margin-top: 40px;
-        font-size: 0.9rem;
-        color: #95a5a6;
-        text-align: center;
-    }
-</style>
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail knihy - <?= htmlspecialchars($book['title'] ?? 'Neznámá kniha') ?></title>
-</head>
-<body>
-    <header>
-        <h1>Aplikace Knihovna</h1>
-    </header>
-
-    <main>
-        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-            <a href="<?= BASE_URL ?>/index.php" class="btn-back">&larr; Zpět</a>
+<div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl border-t-4 border-orange-500 overflow-hidden text-slate-800 mb-8 mt-8">
+    <div class="p-8">
+        <div class="flex justify-between items-center mb-8 pb-4 border-b-2 border-slate-100">
+            <h2 class="text-3xl font-extrabold text-slate-900 uppercase tracking-wide">
+                <span class="text-slate-400 font-light">Detail:</span> <?= htmlspecialchars($book['title'] ?? '') ?>
+            </h2>
+            <a href="<?= BASE_URL ?>/index.php" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-md transition font-medium text-sm tracking-wider uppercase shadow-md hover:shadow-lg">
+                &larr; Zpět
+            </a>
         </div>
 
-        <div class="book-detail-wrapper">
-            <h2>Detail: <?= htmlspecialchars($book['title'] ?? '') ?></h2>
-
-            <table class="detail-table">
-                <tr>
-                    <th>Název:</th>
-                    <td><?= htmlspecialchars($book['title'] ?? '') ?></td>
-                </tr>
-                <tr>
-                    <th>Autor:</th>
-                    <td><?= htmlspecialchars($book['author'] ?? '') ?></td>
-                </tr>
-                <tr>
-                    <th>Kategorie:</th>
-                    <td><?= htmlspecialchars($book['category'] ?? '') ?></td>
-                </tr>
-                <tr>
-                    <th>Podkategorie:</th>
-                    <td><?= htmlspecialchars($book['subcategory'] ?? '') ?></td>
-                </tr>
-                <tr>
-                    <th>Rok vydání:</th>
-                    <td><?= htmlspecialchars($book['year'] ?? '') ?></td>
-                </tr>
-                <tr>
-                    <th>Cena:</th>
-                    <td><?= htmlspecialchars($book['price'] ?? '') ?> Kč</td>
-                </tr>
-                <tr>
-                    <th>ISBN:</th>
-                    <td><?= htmlspecialchars($book['isbn'] ?? '') ?></td>
-                </tr>
-                <tr>
-                    <th>Odkaz:</th>
-                    <td>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-end">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">Název</span>
+                    <span class="text-slate-900 font-bold text-lg leading-tight"><?= htmlspecialchars($book['title'] ?? '') ?></span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-end">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">Autor</span>
+                    <span class="text-slate-800 font-medium"><?= htmlspecialchars($book['author'] ?? '') ?></span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-end">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">Kategorie</span>
+                    <span class="text-slate-800"><?= htmlspecialchars($book['category'] ?? '') ?></span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-end">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">Podkateg.</span>
+                    <span class="text-slate-800"><?= htmlspecialchars($book['subcategory'] ?? '') ?></span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-end">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">Rok vydání</span>
+                    <span class="text-slate-800"><?= htmlspecialchars($book['year'] ?? '') ?></span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-end">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">Cena</span>
+                    <span class="text-orange-600 font-extrabold text-xl"><?= htmlspecialchars($book['price'] ?? '') ?> Kč</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-end">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">ISBN</span>
+                    <span class="text-slate-600 font-mono"><?= htmlspecialchars($book['isbn'] ?? '') ?></span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-4 border-b border-slate-100 pb-3 sm:items-center">
+                    <span class="font-semibold text-slate-400 uppercase text-xs tracking-widest">Odkaz</span>
+                    <span>
                         <?php if (!empty($book['link'])): ?>
-                            <a href="<?= htmlspecialchars($book['link']) ?>" target="_blank"><?= htmlspecialchars($book['link']) ?></a>
+                            <a href="<?= htmlspecialchars($book['link']) ?>" target="_blank" class="text-orange-500 hover:text-orange-600 font-bold transition inline-flex items-center group">
+                                Otevřít odkaz
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
                         <?php else: ?>
-                            Není k dispozici
+                            <span class="text-slate-400 italic text-sm">Není k dispozici</span>
                         <?php endif; ?>
-                    </td>
-                </tr>
-            </table>
+                    </span>
+                </div>
+            </div>
 
+            <div>
+                <?php 
+                $images = !empty($book['images']) ? json_decode($book['images'], true) : [];
+                if (!empty($images) && is_array($images)): 
+                ?>
+                <div class="rounded-xl overflow-hidden shadow-lg border-2 border-slate-100 relative group bg-slate-50">
+                    <img src="<?= BASE_URL ?>/uploads/<?= htmlspecialchars($images[0]) ?>" alt="Obálka knihy" class="w-full max-h-[450px] object-contain transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        
+        <!-- Popis přes celou šířku -->
+        <div class="mt-10 pt-8 border-t-2 border-slate-100">
+            <h3 class="font-extrabold text-slate-900 uppercase tracking-widest text-sm mb-4">Popis knihy</h3>
             <?php if (!empty($book['description'])): ?>
-                <h3 style="color: var(--primary); margin-top: 30px;">Popis:</h3>
-                <div class="description-box">
+                <div class="bg-slate-50 p-6 rounded-r-lg border-l-4 border-orange-500 text-slate-700 shadow-sm leading-relaxed text-sm">
                     <?= nl2br(htmlspecialchars($book['description'])) ?>
                 </div>
             <?php else: ?>
-                <h3 style="color: var(--primary); margin-top: 30px;">Popis:</h3>
-                <p>U této knihy není uveden žádný popis.</p>
+                <p class="text-slate-400 italic bg-white border border-dashed border-slate-300 p-6 rounded-lg text-center font-light">U této knihy není uveden žádný popis.</p>
             <?php endif; ?>
         </div>
-    </main>
+    </div>
+</div>
 
-    <footer>
-        <p>&copy; WA 2026 - Výukový projekt</p>
-    </footer>
-</body>
-</html>
+<?php require_once '../app/views/layout/footer.php'; ?>
