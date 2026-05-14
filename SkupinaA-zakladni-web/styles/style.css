@@ -1,0 +1,102 @@
+/* 
+
+Základní syntaxe CSS
+
+selector {
+    vlastnost-1: hodnota;
+    vlastnost-2: hodnota;
+    vlastnost-3: hodnota;
+    vlastnost-4: hodnota;
+    ...
+    vlastnost-n: hodnota;
+}
+
+*/
+
+
+body {
+    background-color: #cdf8f8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 36px;
+    margin: unset;
+}
+
+h1 {
+    color: darkblue;
+}
+
+h2 {
+    color: blue
+}
+
+
+p {
+    /* rodina písma */
+    font-family: 'Times New Roman', Times, serif;
+   
+   /* velikost textu */
+   font-size: 18px;
+}
+
+header, footer {
+    background-color: skyblue;
+    padding: 0.5rem 1rem 1.5rem 2rem; /* horní,pravý,dolní a levý */
+ }
+
+ footer p {
+    margin: unset;
+ }
+
+ .page-wrapper {
+    width: 90%;
+
+    /* zarovnání na střed */
+    margin: 0 auto;
+ }
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+}
+
+nav li {
+    flex: 1 1 100px
+    /* flex-grow: 1
+    flex-shrink: 1
+    flex-basis: 100px
+    TO SAME ALE ROZEPSANE */
+}
+
+nav a {
+    display: block;
+    background-color: mediumblue;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.grid-container {
+    display: grid;
+    /* grid-template-columns: auto auto auto; */
+    /* grid-template-columns: 3fr 4fr 5fr; */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+}
+
+ .card {
+    background-color: lightblue;
+    padding: 1rem;
+    border-radius: 10px 40px 10px 40px;
+    border: 3px solid orange;
+    /* margin-top: 1rem; */
+ }
+
+ 
