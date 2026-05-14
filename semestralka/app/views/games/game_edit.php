@@ -2,11 +2,23 @@
 
 <main class="flex-grow">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="mb-12">
-            <h2 class="text-4xl font-black text-white tracking-tight uppercase italic">
-                Upravit <span class="text-indigo-500">Hru</span>
-            </h2>
-            <p class="text-slate-400 mt-2 font-medium">Provádíte změny u hry: <?= htmlspecialchars($game['title']) ?></p>
+        <div class="mb-12 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+                <h2 class="text-4xl font-black text-white tracking-tight uppercase italic">
+                    Upravit <span class="text-indigo-500">Hru</span>
+                </h2>
+                <p class="text-slate-400 mt-2 font-medium">Provádíte změny u hry: <?= htmlspecialchars($game['title']) ?></p>
+            </div>
+            <!-- ID záznamu — viditelné v editaci, na rozdíl od formuláře pro vložení nové hry -->
+            <div class="flex-shrink-0 flex items-center gap-2 bg-slate-800/60 border border-slate-700 rounded-2xl px-5 py-3 self-start">
+                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/>
+                </svg>
+                <div>
+                    <p class="text-[9px] text-slate-500 font-black uppercase tracking-widest leading-none mb-0.5">ID záznamu</p>
+                    <p class="text-indigo-400 font-black text-lg leading-none">#<?= (int)$game['id'] ?></p>
+                </div>
+            </div>
         </div>
 
         <form action="<?= BASE_URL ?>/index.php?url=game/update/<?= $game['id'] ?>" method="POST" enctype="multipart/form-data" class="bg-slate-900 rounded-3xl p-8 lg:p-12 border border-slate-800 shadow-2xl">
