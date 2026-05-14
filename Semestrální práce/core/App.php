@@ -2,7 +2,7 @@
 
 class App {
     // Výchozí nastavení, pokud uživatel přijde na hlavní stránku bez parametrů v URL
-    protected $controller = 'BookController';
+    protected $controller = 'SongController';
     protected $method = 'index'; // Výchozí metoda typicky zobrazuje seznam (např. seznam knih)
     protected $params = [];
 

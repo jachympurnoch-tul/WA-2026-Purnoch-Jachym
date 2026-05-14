@@ -1,8 +1,8 @@
 <?php
 
 class Database {
-    private $host = "localhost";
-    private $db_name = "wa_2026_jp_01";
+    private $host = "127.0.0.1";
+    private $db_name = "semestralni_prace_2026";
     private $username = "root";
     private $password = "";
     public $conn;
@@ -21,19 +21,9 @@ class Database {
             
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            // Výpis informace o úspěšném připojení (pro testování)
-            echo "Připojení k databázi bylo úspěšné!<br>";
-            
         } catch (PDOException $exception) {
             echo "Chyba připojení: " . $exception->getMessage();
         }
         return $this->conn;
     }
 }
-
-// Pro otestování připojení stačí tento soubor spustit
-// Můžete tento kód zakomentovat po ověření
-$database = new Database();
-
-// na objektu uloženém v proměnné $database zavoláme metodu getConnection()
-$database->getConnection();
